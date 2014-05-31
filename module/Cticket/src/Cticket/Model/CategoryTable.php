@@ -15,9 +15,15 @@ class CategoryTable
 	public function fetchAll()
 	{
 		$resultSet = $this->tableGateway->select();
+        return $resultSet;
 	}
 
-	public function getById($id)
+	public function fetchAllByStatus($status)
+    {
+        $resultSet = $this->tableGateway->select(array('status' => $status));
+        return $resultSet;
+    }
+    public function getById($id)
 	{
 		$id  = (int) $id;
         $rowset = $this->tableGateway->select(array('id' => $id));

@@ -21,8 +21,19 @@ class TicketForm extends Form
 		$this->add(array(
 			'name'	=> 'subject',
 			'type'	=>	'text',
+			'attributes' => array(
+				'required' => 'required'
+			),
 			'options' => array(
 				'label' => 'Subject',
+			),
+		));
+
+		$this->add(array(
+			'name'	=> 'body',
+			'type'	=>	'textarea',
+			'options' => array(
+				'label' => 'Body',
 			),
 		));
 
@@ -46,6 +57,29 @@ class TicketForm extends Form
 					'1' => 'High',
 					'2' => 'Medium',
 					'3' => 'Low'),
+			),
+		));
+
+		$this->add(array( 
+            'name' => 'email', 
+            'type' => 'Email', 
+            'attributes' => array( 
+                'placeholder' => '', 
+                'required' => 'required', 
+            ), 
+            'options' => array( 
+                'label' => 'Email', 
+            ), 
+        )); 
+
+		$this->add(array(
+			'name'	=> 'contact',
+			'type'	=>	'text',
+			'attributes' => array(
+				'required' => 'required'
+			),
+			'options' => array(
+				'label' => 'Name',
 			),
 		));
 

@@ -22,7 +22,7 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'view-ticket' => array(
+                   /*  'view-ticket' => array(
                         'type'    => 'Segment',
                         'options' => array(
                             'route'     => '/ticket[/][:action][/:id]',
@@ -31,7 +31,7 @@ return array(
                                 'id'     => '[0-9]+',
                             ),
                         ),
-                    ),
+                    ),*/
                     // This route is a sane default when developing a module;
                     // as you solidify the routes for your module, however,
                     // you may want to remove it and replace it with more

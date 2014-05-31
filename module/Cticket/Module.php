@@ -3,6 +3,12 @@ namespace Cticket;
 
 use Cticket\Model\Ticket;
 use Cticket\Model\TicketTable;
+use Cticket\Model\Category;
+use Cticket\Model\CategoryTable;
+
+use Cticket\Form\TicketForm;
+use Cticket\Form\TicketFilter;
+
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -28,12 +34,12 @@ class Module
     {
         return array(
             'factories' => array(
-                'Cticket\Model\TicketTable' =>  function($sm) {
+                'TicketTable' =>  function($sm) {
                     $tableGateway = $sm->get('TicketTableGateway');
                     $table = new TicketTable($tableGateway);
                     return $table;
                 },
-                'Cticket\Model\CategoryTable' =>  function($sm) {
+                'CategoryTable' =>  function($sm) {
                     $tableGateway = $sm->get('CategoryTableGateway');
                     $table = new CategoryTable($tableGateway);
                     return $table;
@@ -47,9 +53,20 @@ class Module
                 'CategoryTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Ticket());
+                    $resultSetPrototype->setArrayObjectPrototype(new Category());
                     return new TableGateway('cticket_category', $dbAdapter, null, $resultSetPrototype);
                 },
+                // FORMS
+                'TicketForm' => function ($sm) {
+                    $form = new TicketForm();
+                    $form->setInputFilter($sm->get('TicketFilter'));
+                    return $form;
+                },
+
+                // FILTERS
+                'TicketFilter' => function ($sm) {
+                    return new TicketFilter();
+                }
             ),
         );
     }

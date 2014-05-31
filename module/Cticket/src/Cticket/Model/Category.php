@@ -20,4 +20,9 @@ class Category
 		$this->updated_at 	= (isset($data['updated_at'])) ? $data['updated_at'] : null;
 	}
 
+	public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
 }

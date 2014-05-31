@@ -1,3 +1,74 @@
 <?php
 ?>
- <h2><?php echo $this->translate('New Ticket'); ?></h2>
+ <div class="page-header">
+ 	<h2><?php echo $this->translate('New Ticket'); ?></h2>
+ </div>
+<?php
+$form = $this->form;
+$form->setAttributes(array(
+	'action' => $this->url('cticket', array( 'controller' => 'Main' ,'action' => 'save', 'id' => 1)),
+	'method' => 'POST',
+));
+
+echo $this->url('cticket', array ('controller' => 'main'));
+
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel ">
+			<div class="panel-heading"><?php echo $this->translate('Ticket Details'); ?></div>
+			<div class="panel-body">
+			<?php echo $this->formLabel($form->get('subject')); ?>
+			<?php
+			echo $this->formElement($form->get('subject')
+					->setAttributes(array(
+						'class' => 'form-control',
+						'placeholder' => ''
+				)));
+			?>
+			<br>
+			<?php echo $this->formLabel($form->get('body')); ?>
+			<?php
+			echo $this->formElement($form->get('body')
+					->setAttributes(array(
+						'class' => 'form-control',
+						'placeholder' => ''
+				)));
+			?>
+			<br>
+			<?php echo $this->formLabel($form->get('priority')) ?>
+			<?php echo $this->formElement($form->get('priority')->setAttribute('class' , 'form-control dropdown')) ?>
+			<br>
+			<?php echo $this->formLabel($form->get('category')) ?>
+			<?php echo $this->formElement($form->get('category')->setAttribute('class' , 'form-control dropdown')->setValueOptions($categories)) ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel ">
+			<div class="panel-heading"><?php echo $this->translate('Your Contact Details'); ?></div>
+			<div class="panel-body">
+			<?php echo $this->formLabel($form->get('contact')) ?>
+			<?php echo $this->formElement($form->get('contact')->setAttribute('class' , 'form-control')) ?>
+			<br>
+			<?php echo $this->formLabel($form->get('email')) ?>
+			<?php echo $this->formElement($form->get('email')->setAttribute('class' , 'form-control')) ?>
+			<br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<center>
+	<?php
+		echo $this->formElement($form->get('submit')
+				->setAttributes(array(
+					'class' => 'btn btn-lg',
+					'placeholder' => ''
+			)));
+	?>
+	</center>
+</div>
+<?php echo $this->form()->closeTag(); ?>

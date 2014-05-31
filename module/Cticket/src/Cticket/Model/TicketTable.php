@@ -15,6 +15,7 @@ class TicketTable
 	public function fetchAll()
 	{
 		$resultSet = $this->tableGateway->select();
+        return $resultSet;
 	}
 
 	public function getById($id)
