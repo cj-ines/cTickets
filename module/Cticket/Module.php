@@ -33,11 +33,22 @@ class Module
                     $table = new TicketTable($tableGateway);
                     return $table;
                 },
+                'Cticket\Model\CategoryTable' =>  function($sm) {
+                    $tableGateway = $sm->get('CategoryTableGateway');
+                    $table = new CategoryTable($tableGateway);
+                    return $table;
+                },
                 'TicketTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Ticket());
-                    return new TableGateway('ticket', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway('cticket_ticket', $dbAdapter, null, $resultSetPrototype);
+                },
+                'CategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Ticket());
+                    return new TableGateway('cticket_category', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

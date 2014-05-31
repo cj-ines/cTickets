@@ -3,7 +3,7 @@ namespace Cticket\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class TicketTable
+class CategoryTable
 {
 	protected $tableGateway;
 
@@ -23,25 +23,22 @@ class TicketTable
         $rowset = $this->tableGateway->select(array('id' => $id));
         $row = $rowset->current();
         if (!$row) {
-           return false;
+            return false;
         }
         return $row;
 	}
 
-	public function save(Ticket $ticket)
+	public function save(Category $object)
 	{
 		$data = array(
-            'subject'		=> $ticket->subject,
-            'body' 			=> $ticket->body,
-            'created_at'	=> $ticket->created_at,
-            'updated_at'	=> $ticket->updated_at,
-            'status'		=> $ticket->status,
-            'priority'		=> $ticket->priority,
-            'email'			=> $ticket->email,
-            'contact'		=> $ticket->contact,
+            'name'		    => $object->name,
+            'description' 	=> $object->description,
+            'created_at'	=> $object->created_at,
+            'updated_at'	=> $object->updated_at,
+            'status'		=> $object->status,
         );
 
-        $id = (int)$ticket->id;
+        $id = (int)$object->id;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {

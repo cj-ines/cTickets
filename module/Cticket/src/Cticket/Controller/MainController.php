@@ -19,11 +19,9 @@ class MainController extends AbstractActionController
     public function viewAction()
     {
         $id = $this->params()->fromRoute('id');
-        if ($id == 0) {
-            $this->redirect()->toRoute('cticket',array('action' => 'index'));
+        if (!$ticket = $this->getTicketTable()->getById($id)) {
+             $this->redirect()->toRoute('cticket',array('action' => 'index'));
         }
-        
-        $ticket = $this->getTicketTable()->getById($id);
         return new ViewModel(array(
             'ticket' => $ticket,
         ));

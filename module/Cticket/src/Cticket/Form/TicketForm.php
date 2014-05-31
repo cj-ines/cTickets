@@ -25,5 +25,37 @@ class TicketForm extends Form
 				'label' => 'Subject',
 			),
 		));
+
+		$this->add(array(
+			'name' => 'category',
+			'type' => 'select',
+			'options' => array(
+				'label' => 'Category',
+				'empty_options' => 'Select Here',
+				'value_options' => array(),
+			),
+		));
+
+		$this->add(array(
+			'name' => 'priority',
+			'type' => 'select',
+			'options' => array(
+				'label' => 'Priotity',
+				'empty_options' => 'Select Here',
+				'value_options' => array(
+					'1' => 'High',
+					'2' => 'Medium',
+					'3' => 'Low'),
+			),
+		));
+
+		$this->add(new Element\Csrf('security'));
+		$this->add(array(
+            'name' => 'submit',
+            'attributes' => array(
+                'type' => 'submit',
+                'value' => 'Submit Ticket',
+            ),
+        ));
 	}
 }
