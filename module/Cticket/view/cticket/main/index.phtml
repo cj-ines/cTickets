@@ -1,1 +1,13 @@
-CJ
+<table class="table">
+<?php
+foreach ($tickets as $ticket) {
+	?>
+	<tr>
+		<td><?php echo $ticket->id; ?></td>
+		<td><?php echo $ticket->subject; ?></td>
+		<td><a href="<?php echo $this->url('cticket/view-ticket', array('action' => 'edit', 'id' => $ticket->id, )); ?>">Edit</a></td>
+	</tr>
+	<?php
+} // end foreach
+?>
+</table>

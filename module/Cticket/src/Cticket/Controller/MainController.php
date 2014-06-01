@@ -1,5 +1,4 @@
 <?php
-// Main Controller
 namespace Cticket\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -20,9 +19,10 @@ class MainController extends AbstractActionController
     public function indexAction()
     {
         
-        $table = $this->getTicketTable();
-        //echo $data = $table->getById(1)->subject;
-        return new ViewModel();
+        $tickets = $this->getTicketTable()->fetchAll();
+        return new ViewModel(array(
+            'tickets' => $tickets,
+        ));
     }
 
     public function viewAction()
@@ -40,6 +40,23 @@ class MainController extends AbstractActionController
     public function createAction()
     {
         $error = null;
+        $request = $this->getRequest();
+        $form = $this->getTicketForm();
+        if ($request->isPost()) {
+            $ticket = new Ticket();
+            $form->setData($request->getPost());
+            
+            if (!$form->isValid()) { 
+                $error = $form->getMessages();
+                //$error = "There are errors in your input.";
+            }
+            else {
+                $ticket->exchangeArray($form->getData());
+                //$ticket->setCreatedAt();
+                $this->getTicketTable()->save($ticket);
+            }
+           
+        }
         $this->setCategoryOptions();
         $form = $this->getTicketForm();
         //$form->get('category')->setValue($categories));
@@ -51,6 +68,11 @@ class MainController extends AbstractActionController
 
     public function saveAction()
     {
+        
+    }
+
+    public function editAction()
+    {
         $error = null;
         $request = $this->getRequest();
         $form = $this->getTicketForm();
@@ -60,11 +82,10 @@ class MainController extends AbstractActionController
             
             if (!$form->isValid()) { 
                 $error = $form->getMessages();
-                $model = new ViewModel(array(
+                return new ViewModel(array(
                     'form' => $form,
                     'error' => $error,
                 ));
-                $model->setTemplate('users/user-manager/edit');
             }
             else {
                 $ticket->exchangeArray($form->getData());
@@ -73,14 +94,7 @@ class MainController extends AbstractActionController
             }
            
         }
-    }
-
-    public function editAction()
-    {
         
-        $error = null;
-        $request = $this->getRequest();
-        $form = $this->getTicketForm();
         $this->setCategoryOptions();
         $id = $this->params()->fromRoute('id');
         if (!$ticket = $this->getTicketTable()->getById($id)) {
