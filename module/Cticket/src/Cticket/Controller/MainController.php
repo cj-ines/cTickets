@@ -7,6 +7,7 @@ use Cticket\Form\TicketForm;
 use Cticket\Model\Ticket;
 use Zend\Stdlib\Hydrator;
 
+
 class MainController extends AbstractActionController
 {
     
@@ -37,31 +38,44 @@ class MainController extends AbstractActionController
 
     public function createAction()
     {
+        
+        $error = null;
+        $request = $this->getRequest();
+        $form = $this->getTicketForm();
+        if ($request->isPost()) {
+            $ticket = new Ticket();
+            $form->setData($request->getPost());
+            
+            if (!$form->isValid()) { 
+                $error = $form->getMessages();
+                //$error = "There are errors in your input.";
+            }
+            else {
+                $ticket->exchangeArray($form->getData());
+                //$ticket->setCreatedAt();
+                $this->getTicketTable()->save($ticket);
+            }
+           
+        }
+
         $categories = array();
         $categories_object = $this->getCategoryTable()->fetchAllbyStatus(1);
+
         foreach ($categories_object as $key => $value) {
             $categories[$value->id] = $value->name;
         }
-
-      
         $form = $this->getTicketForm();
+        $form->get('category')->setValueOptions($categories);
+        //$form->get('category')->setValue($categories));
         return new ViewModel(array(
-            'categories' => $categories,
             'form' => $form,
+            'error' => $error,
         ));
     }
 
     public function saveAction()
     {
-        $request = $this->getRequest();
-        $form = $this->getTicketForm();
-        if ($request->isPost()) {
-            //$ticket = new Ticket();
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-
-            }
-        }
+        
     }
 
     public function getTicketTable()

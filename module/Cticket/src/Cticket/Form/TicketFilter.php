@@ -7,14 +7,7 @@ class TicketFilter extends InputFilter
 {
 	public function __construct()
 	{
-		$this->add(array(
-            'name' => 'parentId',
-            'required' => true,
-            'filters' => array(
-                array('name' => 'Int'),
-            ),
-        ));
-
+		
         $this->add(array(
             'name' => 'subject',
             'required' => true,
@@ -33,6 +26,13 @@ class TicketFilter extends InputFilter
                 ),
             ),
         ));
+
+		$this->add(array(
+			'name' => 'category',
+			'validators' => array(
+				//'RegisterInArrayValidator' => false,
+			),
+		));
 
 		$this->add(array(
             'name' => 'body',

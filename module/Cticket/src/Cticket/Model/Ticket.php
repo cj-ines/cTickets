@@ -1,6 +1,8 @@
 <?php 
 namespace Cticket\Model;
 
+use Zend\Stdlib\DateTime;
+
 class Ticket
 {
 	public $id;
@@ -12,6 +14,7 @@ class Ticket
 	public $priority;
 	public $email;
 	public $contact;
+	public $category;
 
 	public function exchangeArray($data)
 	{
@@ -24,6 +27,13 @@ class Ticket
 		$this->priority 	= (isset($data['priority'])) ? $data['priority'] : null;
 		$this->email 		= (isset($data['email'])) ? $data['email'] : null;
 		$this->contact 		= (isset($data['contact'])) ? $data['contact'] : null;
+		$this->category 	= (isset($data['category'])) ? $data['category'] : null;
 	}
 
+	public function setCreatedAt()
+	{
+		$date = new \DateTime();
+		$date->format('Y-m-d H:i:s');
+		$this->created_at = $date."'";
+	}
 }

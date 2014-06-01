@@ -42,8 +42,10 @@ class TicketForm extends Form
 			'type' => 'select',
 			'options' => array(
 				'label' => 'Category',
-				'empty_options' => 'Select Here',
-				'value_options' => array(),
+				'value_options' => array(
+					'0' => 'None'
+				),
+				'disable_inarray_validator' => true,
 			),
 		));
 
@@ -80,6 +82,20 @@ class TicketForm extends Form
 			),
 			'options' => array(
 				'label' => 'Name',
+			),
+
+		));
+
+		$this->add(array(
+			'name' => 'status',
+			'type' => 'select',
+			'options' => array(
+				'label' => 'Priotity',
+				'empty_options' => 'Select Here',
+				'value_options' => array(
+					'1' => 'Open',
+					'0' => 'Closed',
+				),
 			),
 		));
 

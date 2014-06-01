@@ -40,6 +40,7 @@ class TicketTable
             'priority'		=> $ticket->priority,
             'email'			=> $ticket->email,
             'contact'		=> $ticket->contact,
+            'category'       => $ticket->category,
         );
 
         $id = (int)$ticket->id;
