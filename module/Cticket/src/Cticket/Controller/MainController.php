@@ -39,7 +39,7 @@ class MainController extends AbstractActionController
 
     public function createAction()
     {
-
+        $error = null;
         $this->setCategoryOptions();
         $form = $this->getTicketForm();
         //$form->get('category')->setValue($categories));
@@ -78,7 +78,9 @@ class MainController extends AbstractActionController
     public function editAction()
     {
         
-        
+        $error = null;
+        $request = $this->getRequest();
+        $form = $this->getTicketForm();
         $this->setCategoryOptions();
         $id = $this->params()->fromRoute('id');
         if (!$ticket = $this->getTicketTable()->getById($id)) {
