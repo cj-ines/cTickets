@@ -34,6 +34,11 @@ class Ticket
 	{
 		$date = new \DateTime();
 		$date->format('Y-m-d H:i:s');
-		$this->created_at = $date."'";
+		$this->created_at = $date;
 	}
+
+	public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
 }

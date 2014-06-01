@@ -1,0 +1,58 @@
+<?php
+	$form = $this->form;
+	$mode == 'edit' ? $mode = 'edit' : $mode = 'create';
+	$form->setAttributes(array(
+		'action' => $this->url('cticket/view-ticket', array ('action' => $mode)),
+		'method' => 'POST',
+	));
+
+	$form->prepare();
+	echo $this->form()->openTag($form);
+	?>
+	<?php echo $this->formHidden($form->get('id')); ?>
+	<?php echo $this->formHidden($form->get('security')); ?>
+	<?php echo $this->formHidden($form->get('status')->setValue(1)); ?>
+	<?php echo $this->formLabel($form->get('subject')); ?>
+	<?php echo $this->formElementErrors($form->get('subject')); ?>
+	<?php
+	echo $this->formElement($form->get('subject')
+			->setAttributes(array(
+				'class' => 'form-control',
+				'placeholder' => ''
+		)));
+	?>
+	<br>
+	<?php echo $this->formLabel($form->get('body')); ?>
+	<?php echo $this->formElementErrors($form->get('body')); ?>
+	<?php
+	echo $this->formElement($form->get('body')
+			->setAttributes(array(
+				'class' => 'form-control',
+				'placeholder' => ''
+		)));
+	?>
+	<br>
+	<?php echo $this->formLabel($form->get('priority')) ?>
+	<?php echo $this->formElement($form->get('priority')->setAttribute('class' , 'form-control dropdown')) ?>
+	<br>
+	<?php echo $this->formLabel($form->get('category')) ?>
+	<?php echo $this->formElement($form->get('category')->setAttribute('class' , 'form-control dropdown')) ?>
+	<br>
+	<?php echo $this->formLabel($form->get('contact')) ?>
+	<?php echo $this->formElementErrors($form->get('contact')); ?>
+	<?php echo $this->formElement($form->get('contact')->setAttribute('class' , 'form-control')) ?>
+	<br>
+	<?php echo $this->formLabel($form->get('email')) ?>
+	<?php echo $this->formElementErrors($form->get('email')); ?>
+	<?php echo $this->formElement($form->get('email')->setAttribute('class' , 'form-control')) ?>
+	<br>
+	
+	<?php
+		echo $this->formElement($form->get('submit')
+				->setAttributes(array(
+					'class' => 'btn btn-lg btn-primary',
+					'value' => $mode,
+			)));
+
+	?>
+	<?php echo $this->form()->closeTag(); ?>

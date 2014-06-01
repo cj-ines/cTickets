@@ -1,7 +1,7 @@
 <?php
 ?>
  <div class="page-header">
- 	<h2><?php echo $this->translate('New Ticket'); ?></h2>
+ 	<h2><?php echo $this->translate('Update Ticket'); ?></h2>
  </div>
 
 <div class="row">
@@ -21,7 +21,7 @@
 			<?php
 			echo $this->partial('cticket/main/content/_ticket.phtml', array(
 				'form' => $form,
-				'mode' => 'create',
+				'mode' => 'edit',
 			));
 			?>
 			</div>

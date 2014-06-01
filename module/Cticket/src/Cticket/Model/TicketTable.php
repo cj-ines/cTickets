@@ -40,14 +40,14 @@ class TicketTable
             'priority'		=> $ticket->priority,
             'email'			=> $ticket->email,
             'contact'		=> $ticket->contact,
-            'category'       => $ticket->category,
+            'category'      => $ticket->category,
         );
 
         $id = (int)$ticket->id;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getAlbum($id)) {
+            if ($this->getById($id)) {
                 $this->tableGateway->update($data, array('id' => $id));
             } else {
                 throw new \Exception('Form id does not exist');
