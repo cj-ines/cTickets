@@ -1,3 +1,4 @@
-$('#submit-ticket').click(function(){
+/* $('#submit-ticket').click(function(){
 	alert('yay');
 });
+*/

@@ -43,7 +43,7 @@
                         <li><a href="<?php echo $this->url('cticket') ?>"><?php echo $this->translate('Tickets')?></a></li>
                     </ul>
                     <div class="navbar-right">
-                    	<button class="btn btn-primary navbar-btn" type="button" id="submit-ticket">
+                    	<button class="btn btn-primary navbar-btn" type="button" id="submit-ticket" data-toggle="modal" data-target="#create-ticket-modal">
                     		<span class="glyphicon glyphicon-send"></span> <?php echo $this->translate('Create Ticket')?>
                     	</button>
                     </div>
@@ -61,5 +61,15 @@
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
+        <div id="create-ticket-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content">
+	        		<div class="modal-header">Modal</div>
+	        		<div class="modal-body">
+	        			test
+	        		</div>
+        		</div>
+        	</div>
+        </div>
     </body>
 </html>
