@@ -2,7 +2,7 @@
 	$form = $this->form;
 	$mode == 'edit' ? $mode = 'edit' : $mode = 'create';
 	$form->setAttributes(array(
-		'action' => $this->url('cticket/view-ticket', array ('action' => $mode)),
+		'action' => $this->url('cticket/ticket-admin', array ('action' => $mode)),
 		'method' => 'POST',
 	));
 

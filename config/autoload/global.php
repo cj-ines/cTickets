@@ -14,12 +14,12 @@
 return array(
    'db' => array(
         'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=ctickets;host=localhost',
+        'dsn'            => 'mysql:dbname=xdelzf2;host=xdelzf2-db.my.phpcloud.com',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
-   		'username' => 'root',
-   		'password' => '',
+   		'username' => 'xdelzf2',
+   		'password' => 'hl6en2',
     ),
     'service_manager' => array(
         'factories' => array(
