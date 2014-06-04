@@ -1,7 +1,13 @@
+@author: Crisdell James Ines
+@email: cj.ines@outlook.ph
+
+Just a practice application  development in Zend Framework 2
+
 cTickets
 ========
 
-Features
+Features 
+  * Ticket Creation mananagement (80% done)
   * Simple interface that allows clients to submit tickets and assign priority
   * Dashboad. Graphs and Tables for KPI
   * Email delivery
