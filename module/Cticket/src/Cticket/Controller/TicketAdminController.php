@@ -55,11 +55,13 @@ class TicketAdminController extends AbstractActionController
                 $ticket->exchangeArray($form->getData());
                 //$ticket->setCreatedAt();
                 $this->getTicketTable()->save($ticket);
-                $model = new ViewModel(array(
+                $this->redirect()->toRoute('cticket',array('action' => 'index'));
+               /*  $model = new ViewModel(array(
                 	'messenger' => 'Ticket Submitted',
                 ));
                 $model->setTemplate('ticket-admin/index');
                 return $model;
+                */
             }
            
         }
