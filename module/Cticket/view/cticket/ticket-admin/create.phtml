@@ -19,7 +19,7 @@
 			<div class="panel-heading"><?php echo $this->translate('Ticket Details'); ?></div>
 			<div class="panel-body">
 			<?php
-			echo $this->partial('cticket/main/content/_ticket.phtml', array(
+			echo $this->partial($this->url('cticket/ticket-admin').'/content/_ticket.phtml', array(
 				'form' => $form,
 				'mode' => 'create',
 			));
