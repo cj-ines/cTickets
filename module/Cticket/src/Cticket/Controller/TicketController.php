@@ -10,7 +10,7 @@ use Zend\Stdlib\Hydrator;
 class TicketController extends AbstractActionController
 {
 	function indexAction(){
-		
+		echo "yesh";
 	}
 	
 	function viewAction(){

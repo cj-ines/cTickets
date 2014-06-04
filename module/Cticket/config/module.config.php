@@ -2,7 +2,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Cticket\Controller\Main' => 'Cticket\Controller\MainController',
+            'Cticket\Controller\TicketAdmin' => 'Cticket\Controller\TicketAdminController',
         	'Cticket\Controller\Ticket' => 'Cticket\Conttoller\TicketController',
         ),
     ),
@@ -17,7 +17,7 @@ return array(
                         // Change this value to reflect the namespace in which
                         // the controllers for your module are found
                         '__NAMESPACE__' => 'Cticket\Controller',
-                        'controller'    => 'Main',
+                        'controller'    => 'TicketAdmin',
                         'action'        => 'index',
                     ),
                 ),
@@ -36,7 +36,7 @@ return array(
                 	'ticket' => array(
                     	'type' => 'Segment',
                 		'options' => array (
-                			'route' => '/ticket[/][:action][/:id]',
+                			'route' => '/ticketing[/][:action][/:id]',
                 			'constraints' => array(
                 				'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                 				'id' => '[0-9]+',

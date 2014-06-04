@@ -1,0 +1,21 @@
+<div class="page-header"><h2><?php echo $ticket->subject ?></h2></div>
+<div class="container">
+	<div class="panel col-md-7">
+	<table class="table">
+		<tbody>
+			<tr><th><?php echo $this->translate('Ticket')?> #</th><td><?php echo $this->escapehtml($ticket->id) ?></td></tr>
+			<?php 
+				switch($ticket->status) {
+					case 1: $label=array('class'=>'label-warning', 'label','open');  break;
+					case 0: $label=array('class'=>'label-success', 'label','closed');  break;
+				}
+			 ?>
+			<tr><th><?php echo $this->translate('Status')?></th><td><span class="label <?php echo $label['class']?>"><?php echo $label['label']?></span></td></tr>
+			<tr><th><?php echo $this->translate('Subject')?></th><td><?php echo $this->escapehtml($ticket->subject) ?></td></tr>
+			<tr><th><?php echo $this->translate('Body')?></th><td><?php echo $this->escapehtml($ticket->body) ?></td></tr>
+			<tr><th><?php echo $this->translate('Category')?></th><td><?php echo $this->escapehtml($ticket->category) ?></td></tr>
+			<tr><th><?php echo $this->translate('Email')?></th><td><?php echo $this->escapehtml($ticket->email) ?></td></tr>
+		</tbody>
+	</table>
+	</div>
+</div>

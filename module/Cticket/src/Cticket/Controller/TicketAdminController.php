@@ -3,12 +3,12 @@ namespace Cticket\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Cticket\Form\TicketForm;
+
 use Cticket\Model\Ticket;
-use Zend\Stdlib\Hydrator;
 
 
-class MainController extends AbstractActionController
+
+class TicketAdminController extends AbstractActionController
 {
     
 	private $ticketTable;
@@ -20,6 +20,7 @@ class MainController extends AbstractActionController
     {
         
         $tickets = $this->getTicketTable()->fetchAll();
+        
         return new ViewModel(array(
             'tickets' => $tickets,
         ));
