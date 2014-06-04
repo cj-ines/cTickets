@@ -1,14 +1,71 @@
-<table class="table">
-<?php
-foreach ($tickets as $ticket) {
-	?>
-	<tr>
-		<td><a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'view', 'id' => $ticket->id, )); ?>">View</a></td>
-		<td><?php echo $ticket->id; ?></td>
-		<td><?php echo $ticket->subject; ?></td>
-		<td><a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'edit', 'id' => $ticket->id, )); ?>">Edit</a></td>
-	</tr>
+<div class="container">
+<div class="row">
+	<div class="page-header"><h2><?php echo $this->translate('Ticket Management')?></h2></div>
+</div>
+<div class="row">
+	<ol class="breadcrumb">
+	  <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+	  <li class="active"><?php echo $this->translate('List') ?></li>
+	</ol>
+</div>
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<a class="btn btn-primary" href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'create')) ?>"><span class="glyphicon glyphicon-send"></span> &nbsp; New Ticket</a>
+			 View by:
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			    Status <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">Open</a></li>
+			    <li><a href="#">Closed</a></li>
+			  </ul>
+			</div>
+		</div>		
+	</div>
+	<br>
+</div>
+<div class="row">
+	<div class="panel panel-default">
+	<div class="panel-body">
+	<table class="table">
+	<thead>
+		<tr>
+			<th><?php echo $this->translate('Ticket')?> #</th>
+			<th><?php echo $this->translate('Subject')?></th>
+			<th><?php echo $this->translate('Priority')?></th>
+			<th><?php echo $this->translate('Status')?></th>
+			<th><?php echo $this->translate('Created')?></th>
+			<th><?php echo $this->translate('Actions')?></th>
+		</tr>
+	</thead>
 	<?php
-} // end foreach
-?>
-</table>
+	foreach ($tickets as $ticket) {
+		?>
+		<tr>
+			<td><?php echo $ticket->id; ?></td>
+			<td><?php echo $ticket->subject; ?></td>
+			<td><?php echo $ticket->priority; ?></td>
+			<?php 
+					switch($ticket->status) {
+						case 1: $label=array('class'=>'label-warning', 'label'=>'open');  break;
+						case 0: $label=array('class'=>'label-success', 'label'=>'closed');  break;
+					}
+			?>
+			<td><span class="label <?php echo $label['class'] ?>"><?php echo $label['label']?></span></td>
+			<td><?php echo $ticket->created_at; ?></td>
+			<td>
+				<a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'view', 'id' => $ticket->id, )); ?>"><span class="glyphicon glyphicon-eye-open"></span> </a>
+				<a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'edit', 'id' => $ticket->id, )); ?>"><span class="glyphicon glyphicon-pencil"></span> </a>  
+				<a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'delete', 'id' => $ticket->id, )); ?>"><span class="glyphicon glyphicon-trash"></span> </a> 
+			</td>
+		</tr>
+		<?php
+	} // end foreach
+	?>
+	</table>
+	</div>
+	</div>
+</div>
+</div>

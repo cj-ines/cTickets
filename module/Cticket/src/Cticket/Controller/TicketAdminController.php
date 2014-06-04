@@ -71,7 +71,9 @@ class TicketAdminController extends AbstractActionController
     {
         
     }
-
+	public function delete(){
+		
+	}
     public function editAction()
     {
         $error = null;

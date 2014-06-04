@@ -7,7 +7,7 @@ $(document).ready(function(){
 function load_create_ticket_form()
 {
 	$.ajax({
-		url: '/create-ticket'
+		url: 'create-ticket'
 	}).done(function(response) {
 		$('#create-ticket-form').html(response);
 	});
