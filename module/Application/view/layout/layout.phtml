@@ -43,11 +43,7 @@
                         <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                         <li><a href="<?php echo $this->url('cticket') ?>"><?php echo $this->translate('Tickets')?></a></li>
                     </ul>
-                    <div class="navbar-right">
-                    	<button class="btn btn-primary navbar-btn" type="button" id="submit-ticket" data-toggle="modal" data-target="#create-ticket-modal">
-                    		<span class="glyphicon glyphicon-send"></span> <?php echo $this->translate('Create Ticket')?>
-                    	</button>
-                    </div>
+                    
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -58,7 +54,7 @@
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Crisdell James Ines. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
