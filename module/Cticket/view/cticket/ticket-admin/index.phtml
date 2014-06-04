@@ -26,6 +26,14 @@
 	</div>
 	<br>
 </div>
+<?php if (isset($messenger)) {?>
+<div class="row">
+	<div class="alert alert-warning alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <?php echo $messenger;?>
+	</div>
+</div>
+<?php } ?>
 <div class="row">
 	<div class="panel panel-default">
 	<div class="panel-body">
