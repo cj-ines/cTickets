@@ -3,6 +3,7 @@
 foreach ($tickets as $ticket) {
 	?>
 	<tr>
+		<td><a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'view', 'id' => $ticket->id, )); ?>">View</a></td>
 		<td><?php echo $ticket->id; ?></td>
 		<td><?php echo $ticket->subject; ?></td>
 		<td><a href="<?php echo $this->url('cticket/ticket-admin', array('action' => 'edit', 'id' => $ticket->id, )); ?>">Edit</a></td>
